@@ -18,10 +18,19 @@ export const possibleTileContents = [
 
 export function StartScreen({ start }) {
   return (
-    <div>
-      <button onClick={start} className="bg-gray-400 text-white p-3">
-        Play
-      </button>
+    <div className="min-h-screen flex justify-center items-center">
+      <div className="w-10/12 bg-pink-50 rounded-md py-20 px-8 text-center space-y-8">
+        <h1 className="font-bold text-2xl text-pink-500">Memory</h1>
+        <p className="font-medium text-lg text-pink-400">
+          Flip over tiles looking for pairs
+        </p>
+        <button
+          onClick={start}
+          className="bg-gradient-to-r from-pink-600 via-pink-500 to-pink-600 shadow-md text-white py-3 px-16 rounded-full text-semibold"
+        >
+          Play
+        </button>
+      </div>
     </div>
   );
 }
@@ -109,12 +118,27 @@ export function PlayScreen({ end }) {
 
   return (
     <>
-      <div>
-        {getTiles(6).map((tile, i) => (
-          <Tile key={i} flip={() => flip(i)} {...tile} />
-        ))}
+      <div className="min-h-screen flex justify-center items-center">
+        <div className="w-10/12 text-center">
+          <p className="text-indigo-500 text-lg mb-16">
+            Tries{" "}
+            <span className="inline-block text-sm px-2 py-1 ml-1 bg-indigo-50 rounded-md font-semibold">
+              {tryCount}
+            </span>
+          </p>
+          <div className="bg-indigo-50 p-4 rounded-lg">
+            <div className="grid grid-cols-3 gap-4">
+              {getTiles(6).map((tile, i) => (
+                <>
+                  <div className="size-[70px] bg-indigo-300 rounded-lg overflow-hidden flex items-center justify-center">
+                    <Tile flip={() => flip(i)} {...tile} />
+                  </div>
+                </>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
-      {tryCount}
     </>
   );
 }

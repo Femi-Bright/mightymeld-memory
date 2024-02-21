@@ -9,7 +9,7 @@ export function Tile({ content: Content, flip, state }) {
       );
     case "flipped":
       return (
-        <Front className="inline-block h-8 w-8 bg-green-500">
+        <Front className="inline-block h-full w-full bg-indigo-500">
           <Content
             style={{
               display: "inline-block",
